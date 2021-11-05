@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  hr
+  - var rows = Number(query.rows);
+  - var col = Number(query.cols);
+  p The number of rows is #{rows} and columns is #{col}
+
+  if !Number.isInteger(rows)
+    p Error: "rows" is not an integer 
+  else if !Number.isInteger(col)
+    p Error: "cols" is not an integer 
+  else 
+    if row < 0
+      p Error: "rows" is less than 0, out of bounds 
+    else if row > 7
+      p Error: "rows" is greater than 6, out of bounds 
+    else 
+      if col < 0
+        p Error: "cols" is less than 0, out of bounds 
+      else if col > 6
+        p Error: "cols" is greater than 0, out of bounds 
+      else
+        table#outer 
+          - for( let i=0; i<rows; i++) {
+            tr#middle
+              - for( let j=0; j<col; j++) {
+                td= (i+j)%rows
+              - }
+          - }
