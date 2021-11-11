@@ -3,7 +3,7 @@ const waffleSchema = new mongoose.Schema({
     size: Number,
     color: String,
     cooking_state: String,
-    topping: Array
+    toppings: Array
 });
 
 module.exports = mongoose.model("Waffle", waffleSchema);
