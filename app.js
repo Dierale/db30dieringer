@@ -40,6 +40,28 @@ async function recreateDB() {
     if(err) return console.error(err);
     console.log("First object saved");
   });
+
+  let instance2 = new Waffle({
+    size: 7,
+    color: "Golden",
+    cooking_state: "Perfect",
+    topping: ["Syrup", "Rapsberries", "Sprinkles"]
+  });
+  instance2.save(function(err,doc) {
+    if(err) return console.error(err);
+    console.log("Second object saved");
+  });
+
+  let instance3 = new Waffle({
+    size: 10,
+    color: "Dark Brown",
+    cooking_state: "Burnt",
+    topping: ["Chocolate"]
+  });
+  instance3.save(function(err,doc) {
+    if(err) return console.error(err);
+    console.log("Third object saved");
+  });
 }
 
 let reseed = true;

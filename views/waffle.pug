@@ -5,37 +5,17 @@ block content
   hr
 
   -
-    let results = [
-      {
-        size: 5,
-        color: "Golden",
-        cooking_state: "Cooked",
-        toppings: ["Butter", "Blueberries"]
-      },
-      {
-        size: 7,
-        color: "Golden Brown",
-        cooking_state: "Cooked",
-        toppings: ["Chocolate"]
-      },
-      {
-        size: 10,
-        color: "Dark Brown",
-        cooking_state: "Burnt",
-        toppings: ["Syrup", "Raspberries", "Sprinkles"]
-      }
-    ];
+    let items = results;
 
   br
   br
   div(class="container-fluid")
     div(class="row")
       - let counter = 0;
-      each obj in results
+      each obj in items
         - counter++;
         div(class="col-sm-2") Waffle #{counter} <hr width="60%" float="left">
-          each val, key in obj
-            span #{key} : #{val} <br>
+          span #{obj}
           <hr width="60%" float="left">
           button(class="btn btn-primary" onclick="buy("+counter+")") Buy
  
