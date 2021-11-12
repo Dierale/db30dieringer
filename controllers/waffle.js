@@ -14,8 +14,16 @@ exports.waffle_list = async function(req, res) {
 };
 
 // for a specific Waffle
-exports.waffle_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: Waffle detail: ' + req.params.id);
+exports.waffle_detail = async function(req, res) {
+    console.log("detail" + req.params.id);
+    try{
+        result = await Waffle.findById( req.params.id);
+        res.send(result);
+    } catch(error) {
+        res.status(500);
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    //res.send('NOT IMPLEMENTED: Waffle detail: ' + req.params.id);
 };
 
 // Handle Waffle create on POST
@@ -47,8 +55,29 @@ exports.waffle_delete = function(req, res) {
 };
 
 // Handle Waffle update form on PUT
-exports.waffle_update_put = function(req, res) {
-    res.send('NOT IMPLEMENTED: Waffle update PUT ' + req.params.id);  
+exports.waffle_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Waffle.findById( req.params.id)
+    
+        // Do updates of properties
+        if(req.body.waffle_size)
+            toUpdate.waffle_size = req.body.waffle_size;
+        if(req.body.color) 
+            toUpdate.color = req.body.color;
+        if(req.body.cooking_state) 
+            toUpdate.cooking_state = req.body.cooking_state;
+        if(req.body.toppings)
+            toUpdate.toppings = req.body.toppings;
+        
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+        } catch (err) {
+            res.status(500)
+            res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+        }
+    //res.send('NOT IMPLEMENTED: Waffle update PUT ' + req.params.id);  
 };
 
 // VIEWS
