@@ -74,6 +74,7 @@ var waffleRouter = require('./routes/waffle');
 var modsRouter = require('./routes/addmods');
 var selectRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+var wafflesRouter = require('./routes/waffle');
 
 var app = express();
 
@@ -94,6 +95,7 @@ app.use('/waffle', waffleRouter);
 app.use('/addmods', modsRouter);
 app.use('/selector', selectRouter);
 app.use('/resource', resourceRouter);
+app.use('/waffles', wafflesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

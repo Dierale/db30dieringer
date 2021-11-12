@@ -50,8 +50,17 @@ exports.waffle_create_post = async function(req, res) {
 };
 
 // Handle Waffle delete form on DELETE
-exports.waffle_delete = function(req, res) {
-    res.send('NOT IMPLEMENTED: Waffle delete DELETE ' + req.params.id);
+exports.waffle_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Waffle.findByIdAndDelete( req.params.id);
+        console.log("Removed " + result);
+        res.send(result);
+    } catch (err) {
+        res.status(500);
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+    //res.send('NOT IMPLEMENTED: Waffle delete DELETE ' + req.params.id);
 };
 
 // Handle Waffle update form on PUT
@@ -71,12 +80,12 @@ exports.waffle_update_put = async function(req, res) {
             toUpdate.toppings = req.body.toppings;
         
         let result = await toUpdate.save();
-        console.log("Sucess " + result)
-        res.send(result)
-        } catch (err) {
-            res.status(500)
-            res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
-        }
+        console.log("Sucess " + result);
+        res.send(result);
+    } catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
     //res.send('NOT IMPLEMENTED: Waffle update PUT ' + req.params.id);  
 };
 
