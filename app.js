@@ -74,7 +74,7 @@ var waffleRouter = require('./routes/waffle');
 var modsRouter = require('./routes/addmods');
 var selectRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
-var wafflesRouter = require('./routes/waffle');
+var wafflesRouter = require('./routes/waffles');
 
 var app = express();
 

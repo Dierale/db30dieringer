@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1= title
+    - let waffleid = toShow._id
+    - let wafflesize = toShow.size
+    - let wafflecolor = toShow.color
+    - let wafflecooking_state = toShow.cooking_state
+    - let waffletoppings = toShow.toppings
+
+    div
+        div.row
+            div(class='waffleAttr mr-3') Waffle ID is:
+            div #{waffleid}
+        div.row
+            div(class='waffleAttr mr-3') Waffle Size is:
+            div #{wafflesize}
+        div.row
+            div(class='waffleAttr mr-3') Waffle Color is:
+            div #{wafflecolor}
+        div.row
+            div(class='waffleAttr mr-3') Waffle Cooking State is:
+            div #{wafflecooking_state}
+        div.row
+            div(class='waffleAttr mr-3') Waffle Toppings are:
+            div #{waffletoppings}
