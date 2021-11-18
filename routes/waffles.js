@@ -14,4 +14,7 @@ router.get('/create', waffles_controler.waffle_create_Page);
 /* GET waffle update page */
 router.get('/update', waffles_controler.waffle_update_Page);
 
+/* GET create waffle page */
+router.get('/delete', waffles_controler.waffle_delete_Page);
+
 module.exports = router;
