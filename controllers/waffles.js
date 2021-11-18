@@ -29,7 +29,7 @@ exports.waffle_create_Page = function(req, res) {
 };
 
 // Handle building the view for updating a waffle.
-// query provides the id
+// query provides the id 
 exports.waffle_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
