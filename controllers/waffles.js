@@ -33,7 +33,7 @@ exports.waffle_create_Page = function(req, res) {
 exports.waffle_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
-        let result = await Costume.findById(req.query.id)
+        let result = await Waffle.findById(req.query.id)
         res.render('waffleupdate', { title: 'Waffle Update', toShow: result });
     }
     catch(err){

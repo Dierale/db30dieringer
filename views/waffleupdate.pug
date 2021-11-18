@@ -3,19 +3,29 @@ extends layout
 block content
     h1= title
 
-    form(id='WaffleForm', action="/resource/waffles", method="POST")
+    - let waffleid = toShow._id
+    - let wafflesize = toShow.size
+    - let wafflecolor = toShow.color
+    - let wafflecooking_state = toShow.cooking_state 
+    - let waffletoppings = toShow.toppings
+
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{waffleid}
+    - let actionid = "/resource/waffles/" + waffleid
+    form(id='WaffleForm', action= actionid, method="PUT")
         div.form-group
             label.waffleAttr(for='size') Waffle size
-            input#size(type='number', name='size')
+            input#size(type='number', name='size', value = wafflesize )
         div.form-group
             label.waffleAttr(for='color') Waffle color
-            input#color(type='text', name='color')
+            input#color(type='text', name='color', value = wafflecolor )
         div.form-group
             label.waffleAttr(for='cooking_state') Waffle cooking state
-            input#cooking_state(type='text', name='cooking_state')
+            input#cooking_state(type='text', name='cooking_state', value = wafflecooking_state)
         div.form-group
             label.waffleAttr(for='toppings') Waffle toppings
-            input#toppings(type='text', name='toppings')
+            input#toppings(type='text', name='toppings', value = waffletoppings)
         input(type="submit")
 
     script.
@@ -23,15 +33,15 @@ block content
             event.preventDefault();
             // TODO do something here to show user that form is being submitted
             fetch(event.target.action, {
-                method: 'POST',
+                method: 'PUT',
                 body: new URLSearchParams(new FormData(event.target)) // event.target is the form
             }).then((resp) => {
                 return resp.json(); // or resp.text() or whatever the server sends
             }).then((body) => {
-                alert("Save succeded")
+                alert("Update succeded")
                 // TODO handle body
             }).catch((error) => {
                 // TODO handle error
-                alert("Save failed " + error )
+                alert("Update failed " + error )
             });
         });

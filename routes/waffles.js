@@ -12,6 +12,6 @@ router.get('/detail', waffles_controler.waffle_view_one_Page);
 router.get('/create', waffles_controler.waffle_create_Page);
 
 /* GET waffle update page */
-router.get('/update', waffles_controlers.waffle_update_Page);
+router.get('/update', waffles_controler.waffle_update_Page);
 
 module.exports = router;
