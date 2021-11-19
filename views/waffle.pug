@@ -14,9 +14,12 @@ block content
       - let counter = 0;
       each obj in items
         - counter++;
+        - let destination = `dispatch(\"/waffles/update?id=${obj.id}\")`
         div(class="col-md-4") Waffle #{counter} <hr width="60%" float="left">
           span #{obj}
           <hr width="60%" float="left">
+          button(class="btn btn-primary ml-1" onclick= destination) Update
+          br
           button(class="btn btn-primary" onclick="buy("+counter+")") Buy
  
   br
@@ -25,4 +28,8 @@ block content
   script. 
     function buy(itemNumber) {
       alert("You have purchased Waffle " + itemNumber)
+    }
+
+    function dispatch(path) {
+      window.location.href=path;
     }
