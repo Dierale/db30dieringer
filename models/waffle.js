@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 const waffleSchema = new mongoose.Schema({
-    size: Number,
+    size:{
+        type: Number,
+        required: true,
+        min: 1,
+        max: 10
+    },
     color: String,
     cooking_state: String,
-    toppings: Array
+    toppings: String
 });
 
 module.exports = mongoose.model("Waffle", waffleSchema);

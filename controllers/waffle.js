@@ -70,8 +70,8 @@ exports.waffle_update_put = async function(req, res) {
         let toUpdate = await Waffle.findById( req.params.id)
     
         // Do updates of properties
-        if(req.body.waffle_size)
-            toUpdate.waffle_size = req.body.waffle_size;
+        if(req.body.size)
+            toUpdate.size = parseInt( req.body.size);
         if(req.body.color) 
             toUpdate.color = req.body.color;
         if(req.body.cooking_state) 

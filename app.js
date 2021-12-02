@@ -55,7 +55,7 @@ async function recreateDB() {
     size: 5,
     color: "Golden",
     cooking_state: "Cooked",
-    topping: ["Cheese", "Pepperoni"]
+    topping: "Cheese, Pepperoni"
   });
   instance1.save(function(err,doc) {
     if(err) return console.error(err);
@@ -66,7 +66,7 @@ async function recreateDB() {
     size: 7,
     color: "Golden",
     cooking_state: "Perfect",
-    topping: ["Syrup", "Rapsberries", "Sprinkles"]
+    topping: "Syrup, Raspberries, Sprinkles"
   });
   instance2.save(function(err,doc) {
     if(err) return console.error(err);
@@ -77,7 +77,7 @@ async function recreateDB() {
     size: 10,
     color: "Dark Brown",
     cooking_state: "Burnt",
-    topping: ["Chocolate"]
+    topping: "Chocolate"
   });
   instance3.save(function(err,doc) {
     if(err) return console.error(err);
