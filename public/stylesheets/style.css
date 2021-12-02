@@ -10,3 +10,32 @@ a {
 .btn {
   margin-bottom: 8px;
 }
+
+.buttons-bg {
+  background-color: #CCC;
+  border-color: #DADADA;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 22px;
+}
+
+.spread-buttons p {
+  text-align: center;
+}
+
+.spread-buttons hr {
+  margin: 0 auto;
+}
+
+.spread-buttons .inner-content {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.spread-buttons button {
+  margin-right: 8px;
+}
+
+.details-view .mb-4 {
+
+}

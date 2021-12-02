@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1= title
+    hr
 
     if (toShow == null)
         h2 No instance to delete
@@ -13,23 +14,24 @@ block content
         - let waffletoppings = toShow.toppings
         - let actionid = "/resource/waffles/" + waffleid
         script let actionid = "#{actionid}"
-        div
-            div.row
+        div(class="deatils-view")
+            div(class="row mb-4")
                 div(class='waffleAttr mr-3') Waffle ID is:
                 div #{waffleid}
-            div.row
+            div(class="row mb-4")
                 div(class='waffleAttr mr-3') Waffle Size is:
                 div #{wafflesize}
-            div.row
+            div(class="row mb-4")
                 div(class='waffleAttr mr-3') Waffle Color is:
                 div #{wafflecolor}
-            div.row
+            div(class="row mb-4")
                 div(class='waffleAttr mr-3') Waffle Cooking State is:
                 div #{wafflecooking_state}
-            div.row
+            div(class="row mb-4")
                 div(class='waffleAttr mr-3') Waffle Toppings are:
                 div #{waffletoppings}
         
+        hr
         button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
         button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
     

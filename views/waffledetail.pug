@@ -8,19 +8,35 @@ block content
     - let wafflecooking_state = toShow.cooking_state
     - let waffletoppings = toShow.toppings
 
-    div
-        div.row
+    - let destReturn = `dispatch(\"/waffle\")`
+    br
+    button(class="btn btn-success ml-1" onclick= destReturn) Return to Waffle List
+
+    hr
+    div(class="deatils-view")
+        div(class="row mb-4")
             div(class='waffleAttr mr-3') Waffle ID is:
             div #{waffleid}
-        div.row
+        div(class="row mb-4")
             div(class='waffleAttr mr-3') Waffle Size is:
             div #{wafflesize}
-        div.row
+        div(class="row mb-4")
             div(class='waffleAttr mr-3') Waffle Color is:
             div #{wafflecolor}
-        div.row
+        div(class="row mb-4")
             div(class='waffleAttr mr-3') Waffle Cooking State is:
             div #{wafflecooking_state}
-        div.row
+        div(class="row mb-4")
             div(class='waffleAttr mr-3') Waffle Toppings are:
             div #{waffletoppings}
+        hr
+        - let destUpdate = `dispatch(\"/waffles/update?id=${waffleid}\")`
+        - let destDelete = `dispatch(\"/waffles/delete?id=${waffleid}\")`
+        div(class="spread-buttons")
+            button(class="btn btn-primary ml-1" onclick= destUpdate) Update
+            button(class="btn btn-danger ml-1" onclick= destDelete) Delete
+    
+    script. 
+        function dispatch(path) {
+        window.location.href=path;
+        }

@@ -2,33 +2,46 @@ extends layout
 
 block content
   h1= title
+  - let destCreate = `dispatch(\"/waffles/create\")`
+  br
+  button(class="btn btn-success ml-1" onclick= destCreate) Create New Waffle
   hr
 
   -
     let items = results;
 
   br
-  br
   div(class="container-fluid")
     div(class="row")
       - let counter = 0;
       each obj in items
         - counter++;
-        - let destination = `dispatch(\"/waffles/update?id=${obj.id}\")`
-        div(class="col-md-4") Waffle #{counter} <hr width="60%" float="left">
-          span #{obj}
-          <hr width="60%" float="left">
-          button(class="btn btn-primary ml-1" onclick= destination) Update
-          button(class="btn btn-primary" onclick="buy("+counter+")") Buy
+        - let destView = `dispatch(\"/waffles/detail?id=${obj.id}\")`
+        - let destUpdate = `dispatch(\"/waffles/update?id=${obj.id}\")`
+        - let destDelete = `dispatch(\"/waffles/delete?id=${obj.id}\")`
+        div(class="col-md-3 spread-buttons buttons-bg")
+          div(class="col-1")
+          div(class="col-10 inner-content")
+            p <b> Waffle #{counter} </b>
+            <hr width="60%">
+            p Size: #{obj.size}
+            p Color: #{obj.color}
+            p Cooking State: #{obj.cooking_state}
+            p Toppings: #{obj.toppings}
+            <hr width="60%">
+            br
+            div(class="col-md-12 text-center")
+              button(class="btn btn-secondary ml-1" onclick= destView) View
+              button(class="btn btn-primary ml-1" onclick= destUpdate) Update
+              button(class="btn btn-danger ml-1" onclick= destDelete) Delete
+          div(class="col-1")
+        div(class="col-md-1")
  
+  hr
   br
   a(class="btn btn-success" href="/") Return to Home Page
 
   script. 
-    function buy(itemNumber) {
-      alert("You have purchased Waffle " + itemNumber)
-    }
-
     function dispatch(path) {
       window.location.href=path;
     }
