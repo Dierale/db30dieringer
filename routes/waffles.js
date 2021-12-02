@@ -19,12 +19,12 @@ const secured = (req, res, next) => {
 router.get('/detail', waffles_controler.waffle_view_one_Page);
 
 /* GET create waffle page */
-router.get('/create', waffles_controler.waffle_create_Page);
+router.get('/create', secured, waffles_controler.waffle_create_Page);
 
 /* GET waffle update page */
 router.get('/update', secured, waffles_controler.waffle_update_Page);
 
 /* GET create waffle page */
-router.get('/delete', waffles_controler.waffle_delete_Page);
+router.get('/delete', secured, waffles_controler.waffle_delete_Page);
 
 module.exports = router;

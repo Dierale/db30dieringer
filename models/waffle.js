@@ -6,8 +6,14 @@ const waffleSchema = new mongoose.Schema({
         min: [1, 'Size must be minimum 1'],
         max: [10, 'Size cannot exceed 10']
     },
-    color: String,
-    cooking_state: String,
+    color: {
+        type: String,
+        required: [true, 'Waffle must have a color']
+    },
+    cooking_state: {
+        type: String,
+        required: [true, 'Waffle must have a cooking state']
+    },
     toppings: String
 });
 
