@@ -1,24 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  hr
-  p This is the #{title} page, hosted by Alex Dieringer
-
-  button(type='button' class='btn btn-secondary' onclick='update()') Press Me for the contents
-  br
-  br
-  div(id='target') display 
-  br
-  a(class="btn btn-success" href="/waffle") Search for Waffles
-
-  script.
-    let client_count = 0;
-    function update() {
-      client_count += 1;
-      let newText = `Value is now ${client_count}`;
-      let parentDiv = document.getElementById("target");
-      parentDiv.innerHTML = newText;
-      console.log("Debug - Update called with new innerhtml value of: \n"
-       + newText);
-    }
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/waffle") Take me to waffles
+    br
+    a(href="/logout") Logout
